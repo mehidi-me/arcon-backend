@@ -1,0 +1,23 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14.x
+    commands:
+      - echo Installing yarn
+      - npm install -g yarn
+  pre_build:
+    commands:
+      - echo Installing dependencies
+      - yarn install
+  build:
+    commands:
+      - echo Building the project
+      - yarn build
+      - npx serverless deploy --verbose
+  post_build:
+    commands:
+      - echo Build and Deploy completed successfully on `date`
+artifacts:
+  files:
+    - '**/*'

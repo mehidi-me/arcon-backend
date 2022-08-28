@@ -1,0 +1,516 @@
+{
+	"info": {
+		"_postman_id": "c6210ff7-129b-41bf-99a7-97af7936d024",
+		"name": "Arcon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "All Projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/projects",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Project",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var moment = require(\"moment\")",
+									"",
+									"pm.environment.set('currentDate', \"11/10/2021\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Hospital project title 2\",\n    \"name\": \"Hospital project name 2\",\n    \"description\": \"description about Hospital project 2\",\n    \"clients\": \"Jimmy Divison\",\n    \"location\": \"Halishohor, Earth\",\n    \"workingYear\": \"11/10/2021\",\n    \"ideas\": \"project idea about how it started\",\n    \"challenges\": \"challenges they faced\",\n    \"featureImg\": \"619617db8d100866c2a640e4\",\n    \"images\": [\"619617db8d100866c2a640e4\"],\n    \"userId\": \"6194a4a27866334bd892b351\",\n    \"category\": \"61c95a30a208320244e9eaaa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/projects/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/projects/61c98ddc7c6f503b259574d7",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects",
+								"61c98ddc7c6f503b259574d7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single Project",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/projects/61c98e6814a4835578890f74",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects",
+								"61c98e6814a4835578890f74"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Commercial Project name 2\",\n    \"title\": \"Commercial project title 2\",\n    \"category\": \"61c948895ae40548ea3ec8ba\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/projects/61c9690ea208320244e9eba4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects",
+								"61c9690ea208320244e9eba4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects By Category ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/projects/category/61c948bc5ae40548ea3ec8c4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"projects",
+								"category",
+								"61c948bc5ae40548ea3ec8c4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"mejan\",\n    \"password\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"mejan\",\n    \"password\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/profile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/auth/logout",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Media",
+			"item": [
+				{
+					"name": "Upload Images",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "images",
+									"type": "file",
+									"src": [
+										"/home/mejan/Downloads/pexels-emre-can-acer-2079249.jpg",
+										"/home/mejan/Downloads/pexels-ilya-shakir-2440471.jpg",
+										"/home/mejan/Downloads/pexels-martin-péchy-1866149.jpg"
+									],
+									"disabled": true
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/home/mejan/Downloads/pexels-emre-can-acer-2079246.jpg"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/media/upload/images",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"media",
+								"upload",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Images",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/media/images",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"media",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View File",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/media/get/photo_2021-11-17_15-22-55-8772.jpg",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"media",
+								"get",
+								"photo_2021-11-17_15-22-55-8772.jpg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contact",
+			"item": [
+				{
+					"name": "Send Emails",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"miza9ul@gmail.com\",\n    \"message\": \"Yo!, this is shahed from fothikchari, I am back with another ...\",\n    \"name\": \"Shahidi Chori\",\n    \"phone\": \"09809812331\",\n    \"address\": \"fothikchori, earth\",\n    \"zipcode\": \"123123\",\n    \"subject\": \"A demo email subject\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/contact",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contact"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Garden\",\r\n    \"description\": \"Garden Description\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categories/61c8144d5492c632b5f78644",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories",
+								"61c8144d5492c632b5f78644"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categories/61c807583d4a542e2f516a72",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories",
+								"61c807583d4a542e2f516a72"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Updated Category Title\",\r\n    \"description\": \"Updated Category Description\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories/61c807583d4a542e2f516a72",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories",
+								"61c807583d4a542e2f516a72"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
