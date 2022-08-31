@@ -7,10 +7,11 @@ import {
   Post,
   Query,
   Res,
+  UploadedFile,
   UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
-import { FilesInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import AWS from 'aws-sdk';
 import multerS3 from 'multer-s3';
 import { MediaService } from './media.service';
@@ -25,24 +26,29 @@ export class MediaController {
 
   // @UseGuards(JwtAuthGuard)
   @Post('upload/images')
-  @UseInterceptors(
-    FilesInterceptor('images', 4, {
-      storage: multerS3({
-        s3: new AWS.S3(),
-        bucket: BUCKET,
-        acl: 'public-read',
-        key: editFileName,
-        contentType: multerS3.AUTO_CONTENT_TYPE,
-      }),
-      fileFilter: imageFileFilter,
-    }),
-  )
-  async uploadImages(
-    @Body() body,
-    @UploadedFiles() files: Array<Express.MulterS3.File>,
-  ) {
-    console.dir(files, { depth: null });
-    return await this.mediaService.uploadImages(files);
+  // @UseInterceptors(
+  //   FilesInterceptor('images', 4, {
+  //     storage: multerS3({
+  //       s3: new AWS.S3(),
+  //       bucket: BUCKET,
+  //       acl: 'public-read',
+  //       key: editFileName,
+  //       contentType: multerS3.AUTO_CONTENT_TYPE,
+  //     }),
+  //     fileFilter: imageFileFilter,
+  //   }),
+  // )
+  // async uploadImages(
+  //   @Body() body,
+  //   @UploadedFiles() files: Array<Express.MulterS3.File>,
+  // ) {
+  //   console.dir(files, { depth: null });
+  //   return await this.mediaService.uploadImages(files);
+  // }
+  @UseInterceptors(FilesInterceptor('images'))
+  async uploadImages(@UploadedFiles() files: Express.Multer.File) {
+    //console.log(files);
+    return this.mediaService.uploadImageToCloudinary(files);
   }
 
   // @Get('get/:filePath')

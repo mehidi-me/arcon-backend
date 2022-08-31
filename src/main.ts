@@ -23,7 +23,7 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
-  AWS.config.update({ region: process.env.AWS_REGION });
+  //AWS.config.update({ region: process.env.AWS_REGION });
   await app.listen(process.env.PORT || 5000);
 }
 bootstrap();
